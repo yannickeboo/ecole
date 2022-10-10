@@ -24,3 +24,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: copying  artifact to artifacts
+      run: mkdir artifacts && cp target/*.jar artifacts
+    - name: copying artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: yannick.jar
+        path: artifacts
